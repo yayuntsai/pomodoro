@@ -14,13 +14,30 @@ var PomodoroTimer = function (_React$Component) {
     function PomodoroTimer() {
         _classCallCheck(this, PomodoroTimer);
 
-        return _possibleConstructorReturn(this, (PomodoroTimer.__proto__ || Object.getPrototypeOf(PomodoroTimer)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (PomodoroTimer.__proto__ || Object.getPrototypeOf(PomodoroTimer)).call(this));
+
+        _this.state = { timeElapsed: 0 };
+        return _this;
     }
 
     _createClass(PomodoroTimer, [{
         key: 'totalTime',
         value: function totalTime(timeOne, timeTwo) {
             return timeOne + timeTwo;
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            // console.log(new Date());
+            this.setInterval = setInterval(this.elapseTime.bind(this), 1000);
+            this.setState({ start: new Date() });
+        }
+    }, {
+        key: 'elapseTime',
+        value: function elapseTime() {
+            //How much time has elapsed?
+            //var timeElapsed = CURRENT TIME - START TIME
+            var currentTime = new Date();
         }
     }, {
         key: 'render',
@@ -38,7 +55,9 @@ var PomodoroTimer = function (_React$Component) {
                 this.totalTime(this.props.workingTime, this.props.restingTime),
                 ' minutes.',
                 React.createElement('br', null),
-                'There are 88 seconds elapsed.'
+                'There are ',
+                this.state.timeElapsed,
+                ' seconds elapsed.'
             );
         }
     }]);
