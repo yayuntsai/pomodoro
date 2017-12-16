@@ -33,7 +33,6 @@ class PomodoroTimer extends React.Component{
         //if timeElapsed >= 25 minutes -> then alert
         if(this.state.timeElapsed >= this.props.workingTime * 60){
           clearInterval(this.interval);
-          console.log("hiiiiiiiiii");
           alert("Time up for a break!");
 
         }
@@ -54,7 +53,7 @@ class PomodoroTimer extends React.Component{
 }
 
 ReactDOM.render(
-    <PomodoroTimer workingTime={0.1} restingTime={5}/>,
+    <PomodoroTimer workingTime={25} restingTime={5}/>,
     document.getElementById('app')
 
 );
