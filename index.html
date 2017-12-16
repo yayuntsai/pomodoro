@@ -5,8 +5,45 @@
   <title>Pomodoro Timer</title>
   <script src="https://fb.me/react-15.1.0.min.js"></script>
   <script src="https://fb.me/react-dom-15.1.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed|PT+Sans+Narrow" rel="stylesheet">
 </head>
+
+<style>
+    *{
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-size: 40px;
+      color: white;
+      text-align: center;
+      padding-top: 20px;
+    }
+    html{
+      background-color: #4472C4;
+    }
+    #seconds{
+      width: 100px;
+      height: 100px;
+      padding: 60px 50px 40px 50px;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      margin: 0 auto;
+      margin-top: -10px;
+      font-size: 70px;
+      font-weight: 900;
+    }
+    .clock{
+      font-family: 'PT Sans Narrow', sans-serif;
+      font-size: 70px;
+      font-weight: 900;
+      color: #ed7057;
+      /* border: 3px solid #000;
+      margin: 0 auto;
+      box-shadow: 5px 5px 0 #4472C4 inset, 6px 6px 0 #fff;
+      background-color: #fff;
+      width: 70%; */
+    }
+</style>
 <body>
+  <div class="clock">POMODORO TIMER   <img width="80px" src="https://image.flaticon.com/icons/svg/620/620012.svg" alt=""></div>
   <div id="app"></div>
 <script type="text/javascript" src="./build/index.js"></script></body>
 </html>

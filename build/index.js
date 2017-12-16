@@ -53,7 +53,6 @@ var PomodoroTimer = function (_React$Component) {
             //if timeElapsed >= 25 minutes -> then alert
             if (this.state.timeElapsed >= this.props.workingTime * 60) {
                 clearInterval(this.interval);
-                console.log("hiiiiiiiiii");
                 alert("Time up for a break!");
             }
         }
@@ -73,9 +72,12 @@ var PomodoroTimer = function (_React$Component) {
                 this.totalTime(this.props.workingTime, this.props.restingTime),
                 " minutes.",
                 React.createElement("br", null),
-                "There are ",
-                this.state.timeElapsed,
-                " seconds elapsed."
+                React.createElement("br", null),
+                React.createElement(
+                    "div",
+                    { id: "seconds" },
+                    this.state.timeElapsed
+                )
             );
         }
     }]);
@@ -83,4 +85,4 @@ var PomodoroTimer = function (_React$Component) {
     return PomodoroTimer;
 }(React.Component);
 
-ReactDOM.render(React.createElement(PomodoroTimer, { workingTime: 0.1, restingTime: 5 }), document.getElementById('app'));
+ReactDOM.render(React.createElement(PomodoroTimer, { workingTime: 25, restingTime: 5 }), document.getElementById('app'));

@@ -46,7 +46,8 @@ class PomodoroTimer extends React.Component{
         <br />
         For a total time of {this.totalTime(this.props.workingTime, this.props.restingTime)} minutes.
         <br />
-        There are {this.state.timeElapsed} seconds elapsed.</div>
+        <br />
+        <div id="seconds">{this.state.timeElapsed}</div></div>
       )
     }
 
