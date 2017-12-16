@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -21,43 +21,51 @@ var PomodoroTimer = function (_React$Component) {
     }
 
     _createClass(PomodoroTimer, [{
-        key: 'totalTime',
+        key: "totalTime",
         value: function totalTime(timeOne, timeTwo) {
             return timeOne + timeTwo;
         }
     }, {
-        key: 'componentDidMount',
+        key: "componentDidMount",
         value: function componentDidMount() {
             // console.log(new Date());
             this.setInterval = setInterval(this.elapseTime.bind(this), 1000);
             this.setState({ start: new Date() });
         }
     }, {
-        key: 'elapseTime',
+        key: "elapseTime",
         value: function elapseTime() {
             //How much time has elapsed?
-            //var timeElapsed = CURRENT TIME - START TIME
             var currentTime = new Date();
+            // console.log("CURRENT" + currentTime);
+            // console.log(this.state.start);
+            //var timeElapsed = CURRENT TIME - START TIME
+            var timeElapsed = Math.floor((currentTime - this.state.start) / 1000);
+            console.log("timeElapsed" + timeElapsed);
+
+            //if timeElapsed = 25 minutes -> then alert
+            this.setState({ timeElapsed: timeElapsed });
+            console.log(this);
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
             return React.createElement(
-                'div',
+                "div",
                 null,
-                'This timer runs for ',
+                "This timer runs for ",
                 this.props.workingTime,
-                ' minutes, followed by rest of ',
+                " minutes, followed by rest of ",
                 this.props.restingTime,
-                ' minutes.',
-                React.createElement('br', null),
-                'For a total time of ',
+                " minutes.",
+                React.createElement("br", null),
+                "For a total time of ",
                 this.totalTime(this.props.workingTime, this.props.restingTime),
-                ' minutes.',
-                React.createElement('br', null),
-                'There are ',
+                " minutes.",
+                React.createElement("br", null),
+                "There are ",
                 this.state.timeElapsed,
-                ' seconds elapsed.'
+                " seconds elapsed."
             );
         }
     }]);
