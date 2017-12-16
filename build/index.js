@@ -33,6 +33,11 @@ var PomodoroTimer = function (_React$Component) {
             this.setState({ start: new Date() });
         }
     }, {
+        key: "componentWillUnmount",
+        value: function componentWillUnmount() {
+            clearInterval(this.interval);
+        }
+    }, {
         key: "elapseTime",
         value: function elapseTime() {
             //How much time has elapsed?
@@ -42,10 +47,15 @@ var PomodoroTimer = function (_React$Component) {
             //var timeElapsed = CURRENT TIME - START TIME
             var timeElapsed = Math.floor((currentTime - this.state.start) / 1000);
             console.log("timeElapsed" + timeElapsed);
-
-            //if timeElapsed = 25 minutes -> then alert
             this.setState({ timeElapsed: timeElapsed });
             console.log(this);
+
+            //if timeElapsed >= 25 minutes -> then alert
+            if (this.state.timeElapsed >= this.props.workingTime * 60) {
+                clearInterval(this.interval);
+                console.log("hiiiiiiiiii");
+                alert("Time up for a break!");
+            }
         }
     }, {
         key: "render",
@@ -73,4 +83,4 @@ var PomodoroTimer = function (_React$Component) {
     return PomodoroTimer;
 }(React.Component);
 
-ReactDOM.render(React.createElement(PomodoroTimer, { workingTime: 25, restingTime: 5 }), document.getElementById('app'));
+ReactDOM.render(React.createElement(PomodoroTimer, { workingTime: 0.1, restingTime: 5 }), document.getElementById('app'));
